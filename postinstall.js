@@ -80,7 +80,8 @@ Promise.resolve().then(() => {
             '-i', '-a', '--startuptype', 'delayed',
             '--startcmd', 'node.exe init.win32.js',
             '--set', 'AppPriority ABOVE_NORMAL_PRIORITY_CLASS',
-            '--set', 'Type SERVICE_WIN32_OWN_PROCESS'
+            '--set', 'Type SERVICE_WIN32_OWN_PROCESS',
+            '--env', `APPDATA=${ process.env.APPDATA }`
         ],
         {
             stdio: [
