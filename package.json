@@ -43,7 +43,10 @@
     "sinon": "*"
   },
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha -R spec",
+    "preinstall": "node ./preinstall.js",
+    "postinstall": "node ./postinstall.js",
+    "preuninstall": "node ./preuninstall.js"
   },
   "engines": {
     "node": ">=0.12.0"

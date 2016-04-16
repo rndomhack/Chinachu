@@ -11,12 +11,12 @@
 			return;
 		
 		case 'DELETE':
-			child_process.exec('kill -TERM ' + program.pid, function(err, stdout, stderr) {
-				if (err) return response.error(500);
-				
+			if (chinachu.killProcess(program.pid)) {
 				response.head(200);
 				response.end('{}');
-			});
+			} else {
+				response.error(500);
+			}
 			return;
 	}
 

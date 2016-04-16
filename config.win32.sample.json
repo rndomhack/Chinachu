@@ -1,0 +1,82 @@
+{
+  "recordedDir" : "./recorded/",
+  "temporaryDir": "./tmp/",
+  
+  "wuiUsers": [
+    "akari:bakuhatsu"
+  ],
+  "wuiAllowCountries": ["JP"],
+  
+  "wuiPort"        : 10772,
+  "wuiHost"        : "::",
+  "wuiTlsKeyPath"  : null,
+  "wuiTlsCertPath" : null,
+  "wuiOpenServer"  : false,
+  "wuiOpenPort"    : 20772,
+  "wuiXFF"         : false,
+  "wuiPreviewer"   : true,
+  "wuiStreamer"    : true,
+  "wuiFiler"       : true,
+  "wuiConfigurator": true,
+  "schedulerMirakurunPath": "http+unix://%2F%2F.%2Fpipe%2Fmirakurun/",
+  "schedulerEpgRecordTime": 5,
+  "operSchedulerProcessTime" : 5000,
+  "operSchedulerIntervalTime": 600000,
+  "operRecOffsetStart": 3000,
+  "operRecOffsetEnd": -2000,
+
+  "recordedFormat": "[<date:yymmdd-HHMM>][<type><channel>][<tuner>]<title>.m2ts",
+  
+  "tuners": [
+    {
+      "name"        : "PT3-S1",
+      "isScrambling": false,
+      "types"       : [ "BS", "CS" ],
+      "command"     : "cmd /c rivarun --priority 1 --sid <channel> - -"
+    },
+    {
+      "name"        : "PT3-S2",
+      "isScrambling": false,
+      "types"       : [ "BS", "CS" ],
+      "command"     : "cmd /c rivarun --priority 1 --sid <channel> - -"
+    },
+    {
+      "name"        : "PT3-T1",
+      "isScrambling": false,
+      "types"       : [ "GR" ],
+      "command"     : "cmd /c rivarun --priority 1 --sid <sid> --ch GR/<channel> - -"
+    },
+    {
+      "name"        : "PT3-T2",
+      "isScrambling": false,
+      "types"       : [ "GR" ],
+      "command"     : "cmd /c rivarun --priority 1 --sid <sid> --ch GR/<channel> - -"
+    }
+  ],
+  
+  "channels": [
+    { "type": "GR", "channel": "3" },
+    { "type": "GR", "channel": "8" },
+    { "type": "GR", "channel": "9" },
+    { "type": "GR", "channel": "10" },
+    { "type": "GR", "channel": "11" },
+    { "type": "GR", "channel": "12" },
+    { "type": "GR", "channel": "13" },
+    { "type": "GR", "channel": "14" },
+    
+    { "type": "BS", "channel": "101" },
+    { "type": "BS", "channel": "102" },
+    { "type": "BS", "channel": "103" },
+    { "type": "BS", "channel": "104" },
+    { "type": "BS", "channel": "141" },
+    { "type": "BS", "channel": "151" },
+    { "type": "BS", "channel": "161" },
+    { "type": "BS", "channel": "171" },
+    { "type": "BS", "channel": "181" },
+    { "type": "BS", "channel": "191" },
+    { "type": "BS", "channel": "192" },
+    { "type": "BS", "channel": "193" },
+    { "type": "BS", "channel": "211" },
+    { "type": "BS", "channel": "222" }
+  ]
+}

@@ -257,11 +257,11 @@ function doRecord(program) {
 	program.tuner = tuner;
 	
 	// 保存先パス
-	recPath = config.recordedDir + chinachu.formatRecordedName(program, program.recordedFormat || config.recordedFormat);
+	recPath = path.join(config.recordedDir, chinachu.formatRecordedName(program, program.recordedFormat || config.recordedFormat));
 	program.recorded = recPath;
 	
 	// 保存先ディレクトリ
-	recDirPath = recPath.replace(/^(.+)\/.+$/, '$1');
+	recDirPath = path.resolve(recPath, '../'); 
 	if (!fs.existsSync(recDirPath)) {
 		util.log('MKDIR: ' + recDirPath);
 		mkdirp.sync(recDirPath);

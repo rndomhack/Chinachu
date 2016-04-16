@@ -270,7 +270,7 @@ function httpServerMain(req, res, query) {
 		delete query._method;
 	}
 
-	var filename = path.join('./web/', location);
+	var filename = url.resolve(path.join('./web/', location), '');
 
 	var ext = null;
 	if (filename.match(/[^\/]+\..+$/) !== null) {
@@ -868,7 +868,15 @@ function processChecker() {
 	ios.emit('status', status);
 
 	var c = chinachu.createCountdown(2, chinachu.createTimeout(processChecker, 5000));
-
+	
+	if (process.platform === 'win32') {
+		status.operator.alive = true;
+		status.operator.pid   = null;
+		status.wui.alive = true;
+		status.wui.pid   = null;
+		return;
+	}
+	
 	if (fs.existsSync('/var/run/chinachu-operator.pid') === true) {
 		fs.readFile('/var/run/chinachu-operator.pid', function (err, pid) {
 
